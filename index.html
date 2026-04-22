@@ -269,17 +269,17 @@
                 <a href="https://salted-mayo.neocities.org/">Try some Salted Mayo?</a> <br>
                 <a href="randimg">Get a random image?</a> <br>
                 <a href="nothing">Do nothing?</a>
+                <div class="w95-player">
+                      <b style="margin-right:8px;">addiction.mod</b>
+                      <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').play()">Play</button>
+                      <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').pause()">Pause</button>
+                      <audio id="w95-bgm" src="addiction.mp3"></audio>
+                </div>
                 </div>
             </div>
         </div>
-
-        <div class="w95-player">
-          <b style="margin-right:8px;">addiction.mod</b>
-          <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').play()">Play</button>
-          <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').pause()">Stop</button>
-          <audio id="w95-bgm" src="addiction.mp3"></audio>
-        </div>
-<img src="https://sweetembed.neocities.org/se_spacer.png" alt="" width="1" height="1" style="position:absolute; visibility:hidden;">
+    
+    <img src="https://sweetembed.neocities.org/se_spacer.png" alt="" width="1" height="1" style="position:absolute; visibility:hidden;">
     <script>
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             window.location.replace("mobile");
