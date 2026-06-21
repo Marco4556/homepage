@@ -1,330 +1,203 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <link rel="icon" href="favicon.png" type="image/png">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheMarco4556's Homepage</title>
+    <title>My Personal Hub</title>
+    <!-- Importazione del Font Ubuntu da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- THE DESKTOP BACKGROUND --- */
-        body {
-            background-image: url('background.jpg');
-            cursor: url("cursor.png"), auto;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            background-size: 100% 100%;
-            font-family: 'MS Sans Serif', Tahoma, Geneva, sans-serif;
+        /* Reset e Stili Base (Windows 8.1 / Metro Style) */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; 
         }
 
-        /* --- THE BIG WINDOW CONTAINER --- */
-        .window {
-            background-color: #c0c0c0;
-            width: 80vw;
-            height: 80vh;
-            max-width: 1200px; 
-            max-height: 900px;
-            border-top: 2px solid #ffffff;
-            border-left: 2px solid #ffffff;
-            border-right: 2px solid #000000;
-            border-bottom: 2px solid #000000;
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-            position: absolute;
-            display: flex;
-            flex-direction: column; 
+        body {
+            /* Iconico colore blu scuro/petrolio del menu Start di Windows 8.1 */
+            background-color: #0c1d28; 
+            color: #ffffff;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 400; /* Ubuntu Regular */
+            overflow-x: hidden;
+            padding: 40px 60px;
         }
 
-        /* --- THE TITLE BAR --- */
-        .title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            color: white;
-            padding: 5px 10px;
-            font-weight: bold;
-            font-size: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: grab;
-            flex-shrink: 0; 
+        /* Tipografia */
+        h1, h2, h3 {
+            font-weight: 300; /* Ubuntu Light */
+            text-transform: lowercase; /* Tocco minimalista Metro UI */
         }
 
-        .title-bar:active {
-            cursor: grabbing;
+        header {
+            margin-bottom: 50px;
+            animation: fadeInMove 0.5s ease-out;
         }
 
-        .window-controls {
-            display: flex;
-            gap: 2px;
+        header h1 {
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+            color: #ffffff;
         }
 
-        .btn {
-            background-color: #c0c0c0;
-            border-top: 1px solid #ffffff;
-            border-left: 1px solid #ffffff;
-            border-right: 1px solid #000000;
-            border-bottom: 1px solid #000000;
-            font-size: 14px;
-            font-weight: bold;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: black;
-        }
-        
-        .btn:active {
-            border-top: 1px solid #000000;
-            border-left: 1px solid #000000;
-            border-right: 1px solid #ffffff;
-            border-bottom: 1px solid #ffffff;
+        header p {
+            font-size: 1.2rem;
+            color: #8fa3b0;
+            margin-top: 5px;
         }
 
-        /* --- THE CONTENT AREA --- */
-        .window-content {
+        /* Container Principale a Griglia (Hub di Windows 8) */
+        .metro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-auto-rows: 180px;
+            gap: 15px;
+            max-width: 1200px;
+            animation: fadeInMove 0.7s ease-out;
+        }
+
+        /* Le celebri "Tiles" (Piastrelle) di Windows 8 */
+        .tile {
             padding: 20px;
-            display: flex;
-            gap: 30px;
-            flex-grow: 1; 
-            overflow-y: auto; 
-        }
-
-        /* --- LEFT SIDE: PFP & Badges --- */
-        .profile-side {
+            color: white;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 250px; 
-            flex-shrink: 0;
+            justify-content: space-between;
+            transition: transform 0.1s ease, border 0.1s ease;
+            cursor: pointer;
+            position: relative;
         }
 
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-top: 3px solid #808080;
-            border-left: 3px solid #808080;
-            border-right: 3px solid #ffffff;
-            border-bottom: 3px solid #ffffff;
-            image-rendering: pixelated; 
-            margin-bottom: 15px;
-            object-fit: cover;
+        /* Effetto tilt meccanico al click tipico di Win 8 */
+        .tile:active {
+            transform: scale(0.97);
         }
 
-        .pixel-badge {
-            width: 88px;
-            height: 31px;
-            background-color: #000;
-            color: #00ff00;
-            font-size: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #808080;
-            margin-top: 10px;
-            text-decoration: none;
-            font-family: 'Courier New', Courier, monospace;
+        /* Effetto hover con bordo sottile semi-trasparente */
+        .tile:hover {
+            outline: 3px solid rgba(255, 255, 255, 0.4);
         }
 
-        .badge-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-top: 15px;
+        /* Dimensioni delle Piastrelle */
+        .tile.wide {
+            grid-column: span 2;
         }
 
-        /* --- RIGHT SIDE: Text & Info --- */
-        .info-side {
-            flex: 1;
-            font-size: 16px; 
-            line-height: 1.5;
-            background: #ffffff; 
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            padding: 20px;
-            overflow-y: auto;
+        .tile.large {
+            grid-column: span 2;
+            grid-row: span 2;
         }
 
-        .info-side h2 {
-            margin: 0 0 15px 0;
-            font-size: 24px;
-            color: #000080; 
-            border-bottom: 2px dashed #c0c0c0;
-            padding-bottom: 5px;
+        /* Palette Colori d'accento Windows 8.1 (Flat e Vivaci) */
+        .bg-purple { background-color: #5133ab; }
+        .bg-magenta { background-color: #ff007f; }
+        .bg-teal { background-color: #00aba9; }
+        .bg-blue { background-color: #2d89ef; }
+        .bg-orange { background-color: #d24726; }
+        .bg-green { background-color: #00a300; }
+
+        /* Contenuto delle Piastrelle */
+        .tile h2 {
+            font-size: 1.8rem;
+            line-height: 1.1;
         }
 
-        .fieldset {
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            padding: 15px;
-            margin-top: 20px;
-            background: #e0e0e0;
+        .tile p {
+            font-size: 0.9rem;
+            color: #f0f0f0;
         }
 
-        ul {
-            margin: 10px 0 0 0;
-            padding-left: 25px;
+        .tile-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            align-self: flex-end;
+            text-transform: uppercase;
+            opacity: 0.8;
         }
 
-        /* --- FUNCTIONAL MUSIC PLAYER STYLES --- */
-        .music-player {
-            background: #000;
-            color: #00ff00;
-            padding: 5px 10px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            margin-top: 20px;
-            border: 2px solid #808080;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Animazione d'ingresso (l'effetto "slide" di Windows 8) */
+        @keyframes fadeInMove {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
-        .play-btn {
-            background: #c0c0c0; 
-            border-top: 2px solid #fff; 
-            border-left: 2px solid #fff; 
-            border-right: 2px solid #000; 
-            border-bottom: 2px solid #000; 
-            font-family: 'Courier New', Courier, monospace; 
-            font-weight: bold; 
-            font-size: 12px; 
-            cursor: pointer; 
-            padding: 2px 8px;
-            color: #000;
+
+        /* Responsive per schermi piccoli */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .tile.wide, .tile.large {
+                grid-column: span 1;
+            }
         }
-        
-        .play-btn:active {
-            border-top: 2px solid #000; 
-            border-left: 2px solid #000; 
-            border-right: 2px solid #fff; 
-            border-bottom: 2px solid #fff;
-        }
-        .w95-player { background:#c0c0c0; border-top:2px solid #fff; border-left:2px solid #fff; border-right:2px solid #000; border-bottom:2px solid #000; padding:6px; font-family:sans-serif; font-size:12px; display:inline-flex; align-items:center; color:#000; }
-        .w95-ctrl { background:#c0c0c0; border-top:1px solid #fff; border-left:1px solid #fff; border-right:1px solid #000; border-bottom:1px solid #000; padding:2px 8px; font-weight:bold; cursor:pointer; margin-right:4px; }
-        .w95-ctrl:active { border-top:1px solid #000; border-left:1px solid #000; border-right:1px solid #fff; border-bottom:1px solid #fff; }
     </style>
 </head>
 <body>
-    <audio src="startup.mp3" autoplay>Your web browser doesn't not support autoplay elements.</audio>
-    <div class="window" id="draggable-window" style="top: 46px; left: 15px;">
+
+    <header>
+        <h1>my personal hub</h1>
+        <p>welcome to my start screen. explore my links, social media, and active projects.</p>
+    </header>
+
+    <main class="metro-grid">
         
-        <div class="title-bar" id="window-header">
-            <span class="">homepage.exe</span>
+        <!-- Tile Grande: Profilo / Bio -->
+        <div class="tile large bg-blue">
+            <h2>about me</h2>
+            <p>i am a developer and creator focused on building lightweight indie projects. this page acts as my personal command center, designed with the geometric clean lines of the windows metro interface.</p>
+            <span class="tile-status">profile</span>
         </div>
 
-        <div class="window-content">
-            
-            <div class="profile-side">
-                <img src="my_face.png" alt="My Face" class="profile-pic">
-                
-                <div class="fieldset" style="width: 100%; box-sizing: border-box; text-align: center;">
-                    <b>Lv. 69 Mememaster</b><br>
-                    HP: 100/100<br>
-                    MP: 50/50
-                </div>
-                
-                <div class="badge-grid">
-                    <img src="badges/bestvw.gif">
-                    <img src="badges/hl.gif">
-                    <img src="badges/i_like_computer.png">
-                    <img src="badges/nclinux.gif">
-                    <img src="badges/typhrakromer.gif">
-                    <img src="badges/winamp.gif">
-                </div>
-            </div>
+        <!-- Tile Social: GitHub -->
+        <a href="https://github.com/tuo-username" class="tile bg-purple" target="_blank">
+            <h2>github</h2>
+            <p>repositories, code experiments, and open-source contributions.</p>
+            <span class="tile-status">code</span>
+        </a>
 
-            <div class="info-side">
-                <div class="w95-player">
-                      <b style="margin-right:8px;">addiction.mod</b>
-                      <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').play()">Play</button>
-                      <button class="w95-ctrl" onclick="document.getElementById('w95-bgm').pause()">Pause</button>
-                      <audio id="w95-bgm" src="addiction.mp3"></audio>
-                </div>
-                <h2>Welcome to my website! (WIP)</h2>
-                <p>Hey there! I'm TheMarco4556, an italian guy that loves retro gaming, programming and (most importantly) foxes. In my freetime, I've also created some games, like Untitled Game, Foxi's Wonderful School, Salted Mayo Clicker (even though that's a school project) and Protobunny. Enjoy your stay here, and take a look around!</p>
-                
-                <div class="fieldset">
-                    <b>Stats &amp; Interests:</b>
-                    <ul>
-                        <li><b>Class:</b> Casual Indie Videogame Developer</li>
-                        <li><b>Hobbies:</b> Coding, listening to music, gaming, larping.</li>
-                        <li><b>Likes:</b> Mother Series, Half-Life, Homestar Runner, Minecraft, foxes and more.</li>
-                    </ul>
-                </div>
+        <!-- Tile Social: Discord o X/Twitter -->
+        <a href="https://x.com/tuo-username" class="tile bg-teal" target="_blank">
+            <h2>x / twitter</h2>
+            <p>tech thoughts, development updates, and daily rants.</p>
+            <span class="tile-status">social</span>
+        </a>
 
-                <h2>Follow me everywhere</h2>
-                <a href="https://www.youtube.com/@thefoxicreator4556">YouTube</a> <br>
-                <a href="https://heyflame.itch.io">itch.io</a> <br>
-                <a href="https://scratch.mit.edu/users/LazyFox_Scratch">Scratch</a> <br>
-                <a href="https://www.github.com/Marco4556">GitHub</a> <br>
-                <a href="https://steamcommunity.com/id/thefoxicreator4556">Steam</a> <br>
-                <a href="https://it.pinterest.com/thefoxicreator4556">Pinterest</a> <br>
-                <a href="https://soundcloud.com/themarco4556">Soundcloud</a> <br>
-                <a href="https://www.tiktok.com/@themarco4556">TikTok (Personal)</a> <br>
-                <a href="https://www.tiktok.com/@heyflame.off">TikTok (HeyFlame!)</a>
-                
-                <h2>Do you want to...</h2>
-                <a href="https://salted-mayo.neocities.org/">Try some Salted Mayo?</a> <br>
-                <a href="randimg">Get a random image?</a> <br>
-                <a href="nothing">Do nothing?</a> <br>
-                </div>
-            </div>
-        </div>
-    
-    <img src="https://sweetembed.neocities.org/se_spacer.png" alt="" width="1" height="1" style="position:absolute; visibility:hidden;">
-    <script>
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            window.location.replace("mobile");
-        }
-        
-        
-        // --- DRAG AND DROP SCRIPT ---
-        dragElement(document.getElementById("draggable-window"));
+        <!-- Tile Larga: Progetto Principale (FlameAppMarket) -->
+        <a href="/flameappmarket" class="tile wide bg-orange">
+            <h2>flameappmarket</h2>
+            <p>my customized, server-driven pseudo app store for android built with mit app inventor and hosted right here on neocities.</p>
+            <span class="tile-status">featured project</span>
+        </a>
 
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            
-            if (document.getElementById("window-header")) {
-                document.getElementById("window-header").onmousedown = dragMouseDown;
-            }
+        <!-- Tile Link Vario: Il mio Blog o Sito Secondario -->
+        <a href="https://tuosito.neocities.org/blog" class="tile bg-magenta">
+            <h2>my blog</h2>
+            <p>articles, devlogs, and personal essays about design.</p>
+            <span class="tile-status">read</span>
+        </a>
 
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
-            }
+        <!-- Tile Link Vario: Contatti -->
+        <a href="mailto:tua-email@esempio.com" class="tile bg-green">
+            <h2>contact</h2>
+            <p>drop me an email for collaborations or just to say hello.</p>
+            <span class="tile-status">email</span>
+        </a>
 
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
+    </main>
 
-            function closeDragElement() {
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-    </script>
-
-
-<img id="sweetembed-tracking-pixel" src="https://sweetembed.neocities.org/se_spacer.png" alt="" width="1" height="1" style="position: absolute; visibility: hidden;"></body></html>
+</body>
+</html>
