@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Hub</title>
-    <!-- Importazione del Font Ubuntu da Google Fonts -->
+    <title>TheMarco4556's Homepage</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Reset e Stili Base (Windows 8.1 / Metro Style) */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,7 +17,6 @@
         }
 
         body {
-            /* Iconico colore blu scuro/petrolio del menu Start di Windows 8.1 */
             background-color: #0c1d28; 
             color: #ffffff;
             font-family: 'Ubuntu', sans-serif;
@@ -27,10 +25,9 @@
             padding: 40px 60px;
         }
 
-        /* Tipografia */
         h1, h2, h3 {
             font-weight: 300; /* Ubuntu Light */
-            text-transform: lowercase; /* Tocco minimalista Metro UI */
+            text-transform: lowercase;
         }
 
         header {
@@ -50,7 +47,6 @@
             margin-top: 5px;
         }
 
-        /* Container Principale a Griglia (Hub di Windows 8) */
         .metro-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -60,7 +56,6 @@
             animation: fadeInMove 0.7s ease-out;
         }
 
-        /* Le celebri "Tiles" (Piastrelle) di Windows 8 */
         .tile {
             padding: 20px;
             color: white;
@@ -73,17 +68,14 @@
             position: relative;
         }
 
-        /* Effetto tilt meccanico al click tipico di Win 8 */
         .tile:active {
             transform: scale(0.97);
         }
 
-        /* Effetto hover con bordo sottile semi-trasparente */
         .tile:hover {
             outline: 3px solid rgba(255, 255, 255, 0.4);
         }
 
-        /* Dimensioni delle Piastrelle */
         .tile.wide {
             grid-column: span 2;
         }
@@ -93,7 +85,6 @@
             grid-row: span 2;
         }
 
-        /* Palette Colori d'accento Windows 8.1 (Flat e Vivaci) */
         .bg-purple { background-color: #5133ab; }
         .bg-magenta { background-color: #ff007f; }
         .bg-teal { background-color: #00aba9; }
@@ -101,7 +92,6 @@
         .bg-orange { background-color: #d24726; }
         .bg-green { background-color: #00a300; }
 
-        /* Contenuto delle Piastrelle */
         .tile h2 {
             font-size: 1.8rem;
             line-height: 1.1;
@@ -120,7 +110,6 @@
             opacity: 0.8;
         }
 
-        /* Animazione d'ingresso (l'effetto "slide" di Windows 8) */
         @keyframes fadeInMove {
             from {
                 opacity: 0;
@@ -132,7 +121,6 @@
             }
         }
 
-        /* Responsive per schermi piccoli */
         @media (max-width: 768px) {
             body {
                 padding: 20px;
@@ -149,8 +137,8 @@
 <body>
 
     <header>
-        <h1>my personal hub</h1>
-        <p>welcome to my start screen. explore my links, social media, and active projects.</p>
+        <h1>themarco4556's homepage</h1>
+        <p>hello! i'm themarco4556 and this is my little personal place on the internet.</p>
     </header>
 
     <main class="metro-grid">
@@ -158,43 +146,27 @@
         <!-- Tile Grande: Profilo / Bio -->
         <div class="tile large bg-blue">
             <h2>about me</h2>
-            <p>i am a developer and creator focused on building lightweight indie projects. this page acts as my personal command center, designed with the geometric clean lines of the windows metro interface.</p>
-            <span class="tile-status">profile</span>
+            <p>i am an indie game developer that developed untitled game, salted mayo clicker, protobunny and many more. i'm also the writer of the online comic series fox hangout</p>
         </div>
-
-        <!-- Tile Social: GitHub -->
-        <a href="https://github.com/tuo-username" class="tile bg-purple" target="_blank">
+        
+        <a href="https://github.com/marco4556" class="tile bg-purple" target="_blank">
             <h2>github</h2>
-            <p>repositories, code experiments, and open-source contributions.</p>
-            <span class="tile-status">code</span>
+            <p>repositories, code experiments, and everything in between.</p>
         </a>
 
-        <!-- Tile Social: Discord o X/Twitter -->
-        <a href="https://x.com/tuo-username" class="tile bg-teal" target="_blank">
-            <h2>x / twitter</h2>
-            <p>tech thoughts, development updates, and daily rants.</p>
-            <span class="tile-status">social</span>
+        <a href="https://www.youtube.com/@thefoxicreator4556" class="tile bg-teal" target="_blank">
+            <h2>youtube</h2>
+            <p>my online showcase. i mostly use yt to share my projects</p>
         </a>
 
-        <!-- Tile Larga: Progetto Principale (FlameAppMarket) -->
-        <a href="/flameappmarket" class="tile wide bg-orange">
-            <h2>flameappmarket</h2>
-            <p>my customized, server-driven pseudo app store for android built with mit app inventor and hosted right here on neocities.</p>
-            <span class="tile-status">featured project</span>
+        <a href="https://sites.google.com/view/heyflame/home" class="tile wide bg-orange">
+            <h2>heyflame!</h2>
+            <p>my indie software house that i use to publish my games and apps.</p>
         </a>
 
-        <!-- Tile Link Vario: Il mio Blog o Sito Secondario -->
-        <a href="https://tuosito.neocities.org/blog" class="tile bg-magenta">
-            <h2>my blog</h2>
-            <p>articles, devlogs, and personal essays about design.</p>
-            <span class="tile-status">read</span>
-        </a>
-
-        <!-- Tile Link Vario: Contatti -->
-        <a href="mailto:tua-email@esempio.com" class="tile bg-green">
-            <h2>contact</h2>
-            <p>drop me an email for collaborations or just to say hello.</p>
-            <span class="tile-status">email</span>
+        <a href="https://foxhangout.blogspot.com" class="tile bg-magenta">
+            <h2>fox hangout</h2>
+            <p>my online comic series about foxes talking about various stuff.</p>
         </a>
 
     </main>
